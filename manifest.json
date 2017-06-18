@@ -1,0 +1,24 @@
+{
+  "name": "Snapshot",
+  "version": "1.0.1",
+  "description": "A chrome extension that capture the viewport, downloads the page in html and mhtml ",
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "snap.png",
+    "default_title": "snap the browser"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_end",
+    "all_frames": true
+  }],
+  "icons": {
+    "128": "snap.png"
+  },
+  "manifest_version": 2,
+  "permissions": ["<all_urls>", "activeTab", "downloads", "pageCapture"]
+}
