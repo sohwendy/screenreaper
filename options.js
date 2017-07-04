@@ -4,8 +4,6 @@ function save_options() {
   var save_screenshot = document.getElementById('save_screenshot').checked;
   var save_mhtml = document.getElementById('save_mhtml').checked;
 
-  console.log(save_html, save_mhtml, save_screenshot)
-
   chrome.storage.sync.set({
     save_html: save_html,
     save_screenshot: save_screenshot,
@@ -13,10 +11,14 @@ function save_options() {
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
+    var text = 'Select at least one option';
+    if (save_html || save_mhtml || save_screenshot) {
+      text = 'Options saved.';
+    }
+    status.textContent = text;
     setTimeout(function() {
       status.textContent = '';
-    }, 750);
+    }, 1000);
   });
 }
 
@@ -24,7 +26,7 @@ function restore_options() {
   chrome.storage.sync.get({
     save_html: true,
     save_screenshot: true,
-    save_mhtml: false
+    save_mhtml: true
   }, function(items) {
     document.getElementById('save_html').checked = items.save_html;
     document.getElementById('save_screenshot').checked = items.save_screenshot;

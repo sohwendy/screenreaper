@@ -3,7 +3,7 @@ var options = { };
 chrome.storage.sync.get({
   save_html: true,
   save_screenshot: true,
-  save_mhtml: false
+  save_mhtml: true
 }, function(items) {
  options = items;
 });

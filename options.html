@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Screenshot</title>
+  <title>Screenshot Options</title>
+  <style>
+    label {
+      font-size: medium;
+    }
+    div {
+      margin: 15px 0;
+    }
+  </style>
 </head>
+
 <body>
-<h1>Save</h1>
-  <input type="checkbox" id="save_html"> HTML
-  <input type="checkbox" id="save_mhtml"> MHTML
-  <input type="checkbox" id="save_screenshot"> Screenshot
+<h1>Save in...</h1>
+  <div>
+    <input type="checkbox" id="save_html">
+    <label for="save_html">HTML</label>
+  </div>
+  <div>
+    <input type="checkbox" id="save_mhtml">
+    <label for="save_mhtml">MHTML</label>
+  </div>
+  <div>
+    <input type="checkbox" id="save_screenshot">
+    <label for="save_screenshot">Screenshot</label>
+  </div>
   <div id="status"></div>
 </body>
 <script src="options.js"></script>
