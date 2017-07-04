@@ -1,3 +1,13 @@
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = 'https://ssl.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-102027788-1']);
+_gaq.push(['_trackPageview']);
+
 var options = { };
 
 chrome.storage.sync.get({
@@ -17,6 +27,9 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   pageName = getTimestamp();
+
+  //analytics tracking
+  _gaq.push(['_trackEvent', 'save', 'clicked']);
 
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     //download as html
